@@ -1,20 +1,35 @@
 PODS:
+  - Alamofire (5.2.2)
+  - GoogleMaps (3.10.0):
+    - GoogleMaps/Maps (= 3.10.0)
   - GoogleMaps/Base (3.10.0)
+  - GoogleMaps/Maps (3.10.0):
+    - GoogleMaps/Base
   - GooglePlaces (3.10.0):
     - GoogleMaps/Base (= 3.10.0)
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - GoogleMaps
   - GooglePlaces
+  - SDWebImage (~> 5.9)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - GoogleMaps
     - GooglePlaces
+    - SDWebImage
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   GoogleMaps: 8c080862ff2748ece9929471b30feb56a6c5079d
   GooglePlaces: 9a6f5f3a0c88da2aa1bf7426a65d3e004f5e69a1
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
 
-PODFILE CHECKSUM: a51e3a85c7749d78bc89f5521032b1b14148d3ff
+PODFILE CHECKSUM: 8c31ed62b00c50bbc3b5248ae80b532e4e0e78dd
 
 COCOAPODS: 1.9.3

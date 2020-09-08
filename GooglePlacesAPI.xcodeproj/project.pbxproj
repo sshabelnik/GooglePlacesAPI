@@ -3,10 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A966E89E25063EBD0004B4AC /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E89D25063EBD0004B4AC /* PlacesService.swift */; };
+		A966E8A025063FFC0004B4AC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E89F25063FFC0004B4AC /* Constants.swift */; };
+		A966E8A225064CE40004B4AC /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E8A125064CE40004B4AC /* Endpoints.swift */; };
+		A966E8A425064E090004B4AC /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E8A325064E090004B4AC /* ApiResponse.swift */; };
+		A966E8A625064E390004B4AC /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E8A525064E390004B4AC /* PlaceModel.swift */; };
+		A966E8A8250664180004B4AC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E8A7250664180004B4AC /* DetailsViewController.swift */; };
+		A966E8AA250665530004B4AC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966E8A9250665530004B4AC /* MainTableViewCell.swift */; };
+		A9D269BD25077F60002FBA42 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D269BC25077F60002FBA42 /* SearchPresenter.swift */; };
+		A9D269BF25077F6A002FBA42 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D269BE25077F6A002FBA42 /* DetailsPresenter.swift */; };
+		A9D269C3250784EA002FBA42 /* PlacesServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D269C2250784EA002FBA42 /* PlacesServiceImplementation.swift */; };
 		A9FB90492504D660006C3B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB90482504D660006C3B24 /* AppDelegate.swift */; };
 		A9FB904B2504D660006C3B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB904A2504D660006C3B24 /* SceneDelegate.swift */; };
 		A9FB904D2504D660006C3B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB904C2504D660006C3B24 /* ViewController.swift */; };
@@ -18,6 +28,16 @@
 
 /* Begin PBXFileReference section */
 		1F76A239650A3ED2E4B381F6 /* Pods-GooglePlacesAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GooglePlacesAPI.debug.xcconfig"; path = "Target Support Files/Pods-GooglePlacesAPI/Pods-GooglePlacesAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		A966E89D25063EBD0004B4AC /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
+		A966E89F25063FFC0004B4AC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A966E8A125064CE40004B4AC /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		A966E8A325064E090004B4AC /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		A966E8A525064E390004B4AC /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		A966E8A7250664180004B4AC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		A966E8A9250665530004B4AC /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		A9D269BC25077F60002FBA42 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		A9D269BE25077F6A002FBA42 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		A9D269C2250784EA002FBA42 /* PlacesServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesServiceImplementation.swift; sourceTree = "<group>"; };
 		A9FB90452504D660006C3B24 /* GooglePlacesAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GooglePlacesAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FB90482504D660006C3B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FB904A2504D660006C3B24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +76,70 @@
 				1F76A239650A3ED2E4B381F6 /* Pods-GooglePlacesAPI.debug.xcconfig */,
 				D321C6A23AB2E40EC1B41894 /* Pods-GooglePlacesAPI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A98AAADE25076D01002D568E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A966E8A325064E090004B4AC /* ApiResponse.swift */,
+				A966E8A525064E390004B4AC /* PlaceModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A98AAADF25076D35002D568E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9D269BA25077EF9002FBA42 /* Cells */,
+				A9FB904C2504D660006C3B24 /* ViewController.swift */,
+				A966E8A7250664180004B4AC /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A98AAAE025076D6C002D568E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A966E89D25063EBD0004B4AC /* PlacesService.swift */,
+				A9D269C2250784EA002FBA42 /* PlacesServiceImplementation.swift */,
+				A966E89F25063FFC0004B4AC /* Constants.swift */,
+				A966E8A125064CE40004B4AC /* Endpoints.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A9D269BA25077EF9002FBA42 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A966E8A9250665530004B4AC /* MainTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A9D269BB25077F15002FBA42 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A9D269C025077F7A002FBA42 /* SearchVC */,
+				A9D269C125077F87002FBA42 /* DetailsVC */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A9D269C025077F7A002FBA42 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				A9D269BC25077F60002FBA42 /* SearchPresenter.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		A9D269C125077F87002FBA42 /* DetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				A9D269BE25077F6A002FBA42 /* DetailsPresenter.swift */,
+			);
+			path = DetailsVC;
 			sourceTree = "<group>";
 		};
 		A9FB903C2504D660006C3B24 = {
@@ -83,7 +165,10 @@
 			children = (
 				A9FB90482504D660006C3B24 /* AppDelegate.swift */,
 				A9FB904A2504D660006C3B24 /* SceneDelegate.swift */,
-				A9FB904C2504D660006C3B24 /* ViewController.swift */,
+				A98AAAE025076D6C002D568E /* Services */,
+				A98AAADE25076D01002D568E /* Model */,
+				A98AAADF25076D35002D568E /* View */,
+				A9D269BB25077F15002FBA42 /* Presenter */,
 				A9FB904E2504D660006C3B24 /* Main.storyboard */,
 				A9FB90512504D664006C3B24 /* Assets.xcassets */,
 				A9FB90532504D664006C3B24 /* LaunchScreen.storyboard */,
@@ -104,6 +189,7 @@
 				A9FB90422504D660006C3B24 /* Frameworks */,
 				A9FB90432504D660006C3B24 /* Resources */,
 				B7AD69606C381FC368FCFCA0 /* [CP] Copy Pods Resources */,
+				6DBF22AD25989DAB7427EE08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +269,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6DBF22AD25989DAB7427EE08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GooglePlacesAPI/Pods-GooglePlacesAPI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GooglePlacesAPI/Pods-GooglePlacesAPI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GooglePlacesAPI/Pods-GooglePlacesAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B7AD69606C381FC368FCFCA0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,9 +310,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D269BD25077F60002FBA42 /* SearchPresenter.swift in Sources */,
+				A966E8A025063FFC0004B4AC /* Constants.swift in Sources */,
+				A966E8A625064E390004B4AC /* PlaceModel.swift in Sources */,
+				A966E8A8250664180004B4AC /* DetailsViewController.swift in Sources */,
 				A9FB904D2504D660006C3B24 /* ViewController.swift in Sources */,
+				A966E8AA250665530004B4AC /* MainTableViewCell.swift in Sources */,
 				A9FB90492504D660006C3B24 /* AppDelegate.swift in Sources */,
+				A966E8A425064E090004B4AC /* ApiResponse.swift in Sources */,
 				A9FB904B2504D660006C3B24 /* SceneDelegate.swift in Sources */,
+				A966E8A225064CE40004B4AC /* Endpoints.swift in Sources */,
+				A9D269C3250784EA002FBA42 /* PlacesServiceImplementation.swift in Sources */,
+				A966E89E25063EBD0004B4AC /* PlacesService.swift in Sources */,
+				A9D269BF25077F6A002FBA42 /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

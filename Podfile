@@ -7,5 +7,8 @@ target 'GooglePlacesAPI' do
 
   # Pods for GooglePlacesAPI
 	pod 'GooglePlaces'
+	pod 'GoogleMaps'
+	pod 'Alamofire'
+	pod 'SDWebImage', '~> 5.9'
 
 end
