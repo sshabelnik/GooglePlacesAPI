@@ -7,3 +7,31 @@
 //
 
 import Foundation
+
+class SearchPresenter: SearchViewOutput {
+    
+    weak var view: SearchViewInput!
+    var dataManager: PlacesService!
+    
+    func cityDidSelected(city: String) {
+        dataManager.getPlacesBy(city: city) { (response) in
+            switch response{
+            case .success(let data):
+                let places = data.results
+                self.view.showPlace(places: places)
+            case .failure(let error):
+                print(String(describing: error))
+                
+            }
+        }
+    }
+    
+    func initialSetup() {
+        view.setupGoogleMaps()
+        view.setupSearchController()
+
+    }
+    
+    
+    
+}

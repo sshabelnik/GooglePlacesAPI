@@ -23,6 +23,7 @@ class DetailsViewController: UIViewController {
     
 }
 
+//MARK: - Configure TableView
 extension DetailsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.count

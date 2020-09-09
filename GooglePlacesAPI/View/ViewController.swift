@@ -10,88 +10,50 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    
-    var resultsViewController: GMSAutocompleteResultsViewController?
-    var searchController: UISearchController?
-    var resultView: UITextView?
-    var filter: GMSAutocompleteFilter?
+class ViewController: UIViewController {
+        
+    //MARK: -
+    var resultsViewController: GMSAutocompleteResultsViewController!
+    var searchController: UISearchController!
+    var filter: GMSAutocompleteFilter!
     var googleMapsView: GMSMapView!
-    var locationManager = CLLocationManager()
-    var networkManager: PlacesService!
-    
-    var response: ApiResponse?
+    var locationManager: CLLocationManager!
+    var presenter: SearchViewOutput!
     
     @IBOutlet weak var googleMapsContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultsViewController = GMSAutocompleteResultsViewController()
-        resultsViewController?.delegate = self
-        filter?.type = .city
-        resultsViewController?.autocompleteFilter = filter
-        
-        self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
-        
-        
-        self.googleMapsView = GMSMapView(frame: googleMapsContainer.frame)
-        self.view.addSubview(self.googleMapsView)
-        
-        networkManager = PlacesServiceImplementation()
+        presenter.initialSetup()
     }
     
+    //MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! DetailsViewController
+        destVC.places = sender as? [PlaceModel]
+    }
+    
+    //MARK: - IBAction
     @IBAction func searchControllerButtonPressed(_ sender: Any) {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
+        searchController.searchBar.sizeToFit()
         self.present(searchController!, animated: true, completion: nil)
         
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locationManager.location?.coordinate else { return }
-        moveCameraToLocation(location: location)
-        
-    }
-    
-    func moveCameraToLocation(location: CLLocationCoordinate2D){
-        let camera = GMSCameraPosition.camera(withTarget: location, zoom: 15)
-        
-        googleMapsView.isMyLocationEnabled = true
-        self.googleMapsView.animate(to: camera)
-        
-        self.locationManager.stopUpdatingLocation()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC = segue.destination as! DetailsViewController
-        let segueData = response?.results
-        destVC.places = segueData
     }
     
 }
 
 // MARK: - GoogleMapsAutocompleteDelegate
 
-// Handle the user's selection.
 extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
-        // Do something with the selected place.
-        guard place.name != nil else { return }
-        networkManager.getPlacesBy(city: place.name!) { (response) in
-            switch response{
-            case .success(let data):
-                self.response = data
-                self.performSegue(withIdentifier: "detailsSegue", sender: nil)
-            case .failure(let error):
-                print(String(describing: error))
-                
-            }
-        }  
+        guard let city = place.name else { return }
+        presenter.cityDidSelected(city: city)
+         
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
@@ -107,6 +69,48 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+// MARK: - LocationManager
+extension ViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locationManager.location?.coordinate else { return }
+        DispatchQueue.main.async {
+            self.moveCameraToLocation(location: location)
+        }
+    }
+}
+
+// MARK: - ViewInput
+extension ViewController: SearchViewInput{
+    
+    
+    func showPlace(places: [PlaceModel]) {
+        self.performSegue(withIdentifier: "detailsSegue", sender: places)
+    }
+    
+    func moveCameraToLocation(location: CLLocationCoordinate2D){
+        googleMapsView.isMyLocationEnabled = true
+        let camera = GMSCameraPosition.camera(withTarget: location, zoom: 15)
+        self.googleMapsView.animate(to: camera)
+        
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func setupSearchController() {
+        resultsViewController?.delegate = self
+        filter.type = .city
+        resultsViewController?.autocompleteFilter = filter
+    }
+    
+    func setupGoogleMaps() {
+        self.googleMapsView = GMSMapView(frame: googleMapsContainer.frame)
+        self.view.addSubview(self.googleMapsView)
+        
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.requestWhenInUseAuthorization()
     }
 }
 

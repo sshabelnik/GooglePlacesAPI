@@ -1,5 +1,5 @@
 //
-//  DetailsPresenter.swift
+//  SearchViewOutput.swift
 //  GooglePlacesAPI
 //
 //  Created by Сергей Шабельник on 08.09.2020.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol SearchViewOutput: AnyObject {
+    func initialSetup()
+    func cityDidSelected(city: String)
+}
