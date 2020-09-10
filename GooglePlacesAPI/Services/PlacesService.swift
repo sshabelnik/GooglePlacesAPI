@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PlacesService: NSObject{
+protocol PlacesService: AnyObject{
     func getPlacesBy(city: String, completion: @escaping (Result<ApiResponse, Error>) -> Void)
 }
